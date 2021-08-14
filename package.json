@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://irob4ik.github.io/goit-react-hw-06-phonebook",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -11,7 +12,11 @@
     "modern-normalize": "^1.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -42,6 +47,7 @@
   },
   "devDependencies": {
     "eslint": "^7.32.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "redux-devtools-extension": "^2.13.9"
   }
 }

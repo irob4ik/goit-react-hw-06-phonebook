@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { connect } from 'react-redux'
+import contactActions from '../../redux/phonebook-actions';
 import styles from './form.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
-export default function Form({ submit, option }) {
-    const [id] = useState(0);
+function Form({ submit, option }) {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
 
@@ -12,7 +13,7 @@ export default function Form({ submit, option }) {
     const handleSubmit = evt => {
         evt.preventDefault();
 
-        submit({ id, name, number });
+        submit({ name, number });
 
         setName('');
         setNumber('');      
@@ -70,6 +71,11 @@ export default function Form({ submit, option }) {
           <button type="submit" className={styles.formBtn}>Add contact</button>          
         </form>
         </>
-    );
-    
+    );    
 }
+
+const mapDispatchToProps = dispatch => ({
+    submit: (dataSet) => dispatch(contactActions.addContact(dataSet)),
+})
+
+export default connect(null, mapDispatchToProps)(Form);
