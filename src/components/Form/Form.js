@@ -1,19 +1,20 @@
 import { useState } from 'react';
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import contactActions from '../../redux/phonebook-actions';
 import styles from './form.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
-function Form({ submit, option }) {
+export default function Form({ option }) {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
+    const dispatch = useDispatch();
 
     const inputId = uuidv4();
 
     const handleSubmit = evt => {
         evt.preventDefault();
 
-        submit({ name, number });
+        dispatch(contactActions.addContact({ name, number }));
 
         setName('');
         setNumber('');      
@@ -72,10 +73,4 @@ function Form({ submit, option }) {
         </form>
         </>
     );    
-}
-
-const mapDispatchToProps = dispatch => ({
-    submit: (dataSet) => dispatch(contactActions.addContact(dataSet)),
-})
-
-export default connect(null, mapDispatchToProps)(Form);
+};
